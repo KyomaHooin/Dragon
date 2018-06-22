@@ -109,8 +109,8 @@
  */
  
 #include <SoftwareSerial.h> 
-#include <NHDLCD7.h>  //BB for LCD
-NHDLCD7 lcd(4,2,16); // desired pin, rows, cols   //BB for LCD
+//#include <NHDLCD7.h>  //BB for LCD
+//NHDLCD7 lcd(4,2,16); // desired pin, rows, cols   //BB for LCD
 
  
  
@@ -546,12 +546,12 @@ void killSwitch()
 void setup()
 {
   delay(1000);
-  lcd.setup();  
-  delay(100);
+// lcd.setup();  
+// delay(100);
   
-  lcd.empty();
-  lcd.at(1,1,"eMotimo TB3Black");
-  lcd.at(2,1,"Dragonframe 1.25");
+// lcd.empty();
+// lcd.at(1,1,"eMotimo TB3Black");
+// lcd.at(2,1,"Dragonframe 1.25");
   
   goMoReady = false;
   lastUserData = 0;
