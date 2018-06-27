@@ -9,10 +9,10 @@ DIAGRAM
 
 COMPONENT
 <pre>
-1x Arduino Uno (R3)
-1x Nema 17 Stepper (42STH47-1684A)
-1x Big Easy Driver (ROB-12859)
-1x Mean Well Supply (RS-25-12)
+1x Arduino Uno(R3)
+1x Nema 17 Stepper(42STH47-1684A)
+1x Big Easy Driver(ROB-12859)
+1x Mean Well Supply(RS-25-12)
 </pre>
 FILE
 <pre>
