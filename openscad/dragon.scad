@@ -5,8 +5,8 @@
 //TODO:
 //
 // -RJ11 slot
-// -driver mount
 // -uno mount
+// -supply sink
 // -box mount
 // -box lip lock
 // -box vent
@@ -26,6 +26,13 @@ module rounded_rect(x, y, z, radius) {
             square([x,y]);
             circle(r = radius);
         }
+}
+
+module mount(dia,thick) {
+    difference() {
+        cylinder(h=thick, r2=dia,r1=dia+1);
+        translate([0,0,-1])cylinder(h=thick+2, d=dia);
+    }
 }
 
 module bridge() {
@@ -107,10 +114,16 @@ module bottom() {
     difference() {
         translate([0,0,0]) rounded_rect(bottomX,bottomY,bottomZ,bottomThick);// BASE
         translate([0,0,bottomThick]) cube([bottomX,bottomY,bottomZ]);// FILL
-        translate([0,10,bottomThick]) supply();// SUPPLY
+        translate([+1,10,bottomThick+1]) supply();// SUPPLY
         translate([bottomX/2+5,bottomY+2,bottomThick+7]) rotate([90,0,0]) cylinder(h=4,d=5);// SUPPLY HOLE
     }
-    translate([45,bottomY-13,bottomThick]) rotate([0,0,90]) bridge();
+    translate([25.4+1,10.5+10,bottomThick]) mount(3,1);// Supply mount
+    translate([25.4+1,10.5+55+10,bottomThick]) mount(3,1);
+    translate([0,2.75+10,14+bottomThick+1]) rotate([0,90,0]) mount(3,1);
+    translate([0,2.75+66.5+10,14+bottomThick+1]) rotate([0,90,0]) mount(3,1);
+    translate([bottomX,60+4,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);// Driver mount
+    translate([bottomX,60+38-4,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);
+    translate([45,bottomY-13,bottomThick]) rotate([0,0,90]) bridge();// Bridge
 }
 
 topX=65;
@@ -138,8 +151,8 @@ if (drawBottom) {
 
 if (drawAll) {
     bottom();
-    translate([0,10,bottomThick]) supply();
-    translate([bottomX-1.6,60,bottomThick+5]) rotate([0,0,0]) rotate([0,-90,0]) driver();
-    translate([bottomX-5,6.2-bottomThick,bottomZ+15]) rotate([180,0,180]) uno();
+//    translate([1,10,bottomThick+1]) supply();
+//    translate([bottomX-3,60,bottomThick+5]) rotate([0,0,0]) rotate([0,-90,0]) driver();
+//    translate([bottomX-5,6.2-bottomThick,bottomZ+15]) rotate([180,0,180]) uno();
 //    translate([0,0,bottomZ]) top();
 }
