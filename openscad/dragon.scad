@@ -4,15 +4,13 @@
 
 //TODO:
 //
-// -Mount hole
 // -RJ11 slot
-// -driver hole+mount
-// -uno hole+mount
-// -uno PLS side
+// -driver mount
+// -uno mount
+// -box mount
 // -box lip lock
-// -box screw hole
-// -Global size check
-//
+// -box vent
+// -global size check
 
 $fn=50;
 
@@ -48,10 +46,12 @@ module driver() {
         union() {
             color("darkgreen")
             translate([0,0,0]) cube([driverX,driverY,driverZ]);    
-            color("black")
+            color("black") {
             translate([0,driverY/4,driverZ]) cube([5,22,5]);// header M/PWR
-            color("black")
-            translate([driverX-5,driverY-11-driverY/8,driverZ]) cube([5,11,5]);// header UNO
+            translate([driverX-5,driverY-11-driverY/8,driverZ]) cube([5,11,5]);// header
+            }
+            color("silver")
+            translate([driverX-20,driverY-8,driverZ]) cylinder(h=5.5,d=6);// header
         }
         translate([driverX/2,4,-1]) cylinder(h=driverZ+2,d=3);
         translate([driverX/2,driverY-4,-1]) cylinder(h=driverZ+2,d=3);
@@ -67,12 +67,15 @@ module uno() {
         union() {
             color("darkgreen")
             translate([0,0,0]) cube([unoX,unoY,unoZ]);    
-            color("black")
+            color("black") {
             translate([9.6,-6.2,unoZ]) cube([12,15,10.9]);// USB-B
+            translate([unoX-2.5-5.1-27.9-15.2-2.54/2,25,unoZ]) cube([2.54,40,10]);// Header
+            translate([unoX-2.5-2.54/2,35,unoZ]) cube([2.54,30,10]);
+            }
         }
-        translate([unoX-2.5-5.1-27.9-15.2,14+1.2,-1]) cylinder(h=unoZ+2,d=3);// Mount Hole
-        translate([unoX-2.5-5.1-27.9,14+51.9,-1]) cylinder(h=unoZ+2,d=3);
-        translate([unoX-2.5-5.1,14+51.9,-1]) cylinder(h=unoZ+2,d=3);
+        translate([unoX-2.5-5.1-27.9-15.2,14+1.3,-1]) cylinder(h=unoZ+2,d=3);// Mount Hole
+        translate([unoX-2.5-5.1-27.9,14+1.3+50.8,-1]) cylinder(h=unoZ+2,d=3);
+        translate([unoX-2.5-5.1,14+1.3+50.8,-1]) cylinder(h=unoZ+2,d=3);
         translate([unoX-2.5,14,-1]) cylinder(h=unoZ+2,d=3);
     }
 }
@@ -134,9 +137,9 @@ if (drawBottom) {
 }
 
 if (drawAll) {
-//    bottom();
+    bottom();
     translate([0,10,bottomThick]) supply();
     translate([bottomX-1.6,60,bottomThick+5]) rotate([0,0,0]) rotate([0,-90,0]) driver();
     translate([bottomX-5,6.2-bottomThick,bottomZ+15]) rotate([180,0,180]) uno();
-    translate([0,0,bottomZ]) top();
+//    translate([0,0,bottomZ]) top();
 }
