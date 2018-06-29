@@ -2,11 +2,25 @@
 // DragonFrame Motor Unit box
 //
 
+//TODO:
+//
+// -Mount hole
+// -RJ11 slot
+// -driver hole+mount
+// -uno hole+mount
+// -uno PLS side
+// -box lip lock
+// -box screw hole
+// -Global size check
+//
+
 $fn=50;
 
-boxThick=2;
-boxLength=63;
-boxWidth=45;
+drawTop=0;
+drawBottom=0;
+drawAll=1;
+
+//----------------------------
 
 module rounded_rect(x, y, z, radius) {
     linear_extrude(height=z)
@@ -14,6 +28,15 @@ module rounded_rect(x, y, z, radius) {
             square([x,y]);
             circle(r = radius);
         }
+}
+
+module bridge() {
+    difference() {
+        cube([5,18,7]);
+        translate([-1,9,7]) rotate([0,90,0]) cylinder(h=10,d=7);
+        translate([2.5,2.5,4]) cylinder(h=4,d=2);
+        translate([2.5,15.5,4]) cylinder(h=4,d=2);
+    }
 }
 
 module driver() {
@@ -64,21 +87,56 @@ module supply() {
         translate([0,0,0]) cube([supplyX,supplyY,supplyZ]);
         color("black") {
         translate([0,supplyY,supplyZ/4]) cube([51,14,14]);// header
-        translate([25.4,10.5,0]) cylinder(h=2,d=3);// screwhole
-        translate([25.4,10.5+55,0]) cylinder(h=2,d=3);
-        translate([0,2.75,14]) rotate([0,90,0]) cylinder(h=2,d=3);
-        translate([0,2.75+66.5,14]) rotate([0,90,0]) cylinder(h=2,d=3);
+        translate([25.4,10.5,-3]) cylinder(h=4,d=3);// screwhole
+        translate([25.4,10.5+55,-3]) cylinder(h=4,d=3);
+        translate([-3,2.75,14]) rotate([0,90,0]) cylinder(h=4,d=3);
+        translate([-3,2.75+66.5,14]) rotate([0,90,0]) cylinder(h=4,d=3);
         }
     }
 }
 
+bottomX=65;
+bottomY=125;
+bottomZ=30;
+bottomThick=2;
+
 module bottom() {
+    difference() {
+        translate([0,0,0]) rounded_rect(bottomX,bottomY,bottomZ,bottomThick);// BASE
+        translate([0,0,bottomThick]) cube([bottomX,bottomY,bottomZ]);// FILL
+        translate([0,10,bottomThick]) supply();// SUPPLY
+        translate([bottomX/2+5,bottomY+2,bottomThick+7]) rotate([90,0,0]) cylinder(h=4,d=5);// SUPPLY HOLE
+    }
+    translate([45,bottomY-13,bottomThick]) rotate([0,0,90]) bridge();
 }
+
+topX=65;
+topY=125;
+topZ=17;
+topThick=2;
 
 module top() {
+    difference() {
+        translate([0,0,0]) rounded_rect(topX,topY,topZ,topThick);// BASE
+        translate([0,0,-topThick]) cube([topX,topY,topZ]);// FILL
+        translate([topX-5,6.2-topThick,topZ-topThick]) rotate([180,0,180]) uno();// Uno
+    }
 }
 
+//--------------------------
 
-//supply();
-//uno();
-//driver();
+if (drawTop) {
+    top();
+}
+
+if (drawBottom) {
+    top();
+}
+
+if (drawAll) {
+//    bottom();
+    translate([0,10,bottomThick]) supply();
+    translate([bottomX-1.6,60,bottomThick+5]) rotate([0,0,0]) rotate([0,-90,0]) driver();
+    translate([bottomX-5,6.2-bottomThick,bottomZ+15]) rotate([180,0,180]) uno();
+    translate([0,0,bottomZ]) top();
+}
