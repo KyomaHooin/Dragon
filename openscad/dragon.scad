@@ -2,7 +2,6 @@
 // DragonFrame Motor Unit box
 //
 //TODO:
-// -box lip lock
 // -LED hole
 // -Bridges/Hole
 // -top/supply sink
@@ -35,6 +34,17 @@ module mount_box(thick,hole,dia) {
     difference() {
         cylinder(h=thick,d=dia*2);
         translate([0,0,-1]) cylinder(h=thick+2,d=hole);
+    }
+}
+
+module lip_lock_top() {
+    rounded_rect(bottomX,bottomY,1,bottomThick/2+0.125);
+}
+
+module lip_lock_bottom() {
+    difference() {
+        rounded_rect(bottomX,bottomY,1,bottomThick);
+        rounded_rect(bottomX,bottomY,1,bottomThick/2-0.125);
     }
 }
 
@@ -114,6 +124,7 @@ module bottom() {
         translate([+1,10,bottomThick+1]) supply();// Supply
         translate([bottomX/2+4,bottomY+2,bottomThick+7]) rotate([90,0,0]) cylinder(h=4,d=5);// Supply Hole
         translate([bottomX/2+21,bottomY+2,bottomThick+5.5]) rotate([90,0,0]) cube([5,3,4]);// Motor Hole
+        translate([0,0,bottomZ-1]) lip_lock_bottom();// Lip Lock
     }
     translate([25.4+1,10.5+10,bottomThick]) mount(3,1);// Supply mount
     translate([25.4+1,10.5+55+10,bottomThick]) mount(3,1);
@@ -123,10 +134,10 @@ module bottom() {
     translate([bottomX,60+38-4,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);
     translate([45,bottomY-10,bottomThick]) rotate([0,0,90]) bridge();// Supply Bridge
     translate([65,bottomY-10,bottomThick]) rotate([0,0,90]) bridge();// Motor Bridge
-    translate([2,2,0]) mount_box(bottomZ,2,4);// Bottom mount
-    translate([bottomX-2,2,0]) mount_box(bottomZ,2,4);
-    translate([bottomX-2,bottomY-2,0]) mount_box(bottomZ,2,4);
-    translate([2,bottomY-2,0]) mount_box(bottomZ,2,4);
+    translate([2,2,0]) mount_box(bottomZ-1,2,4);// Bottom mount
+    translate([bottomX-2,2,0]) mount_box(bottomZ-1,2,4);
+    translate([bottomX-2,bottomY-2,0]) mount_box(bottomZ-1,2,4);
+    translate([2,bottomY-2,0]) mount_box(bottomZ-1,2,4);
 }
 
 topX=65;
@@ -146,20 +157,24 @@ module top() {
         translate([topX-2,topY-2,topZ-3]) cylinder(h=topThick+2,d=3);
         for (vspace=[1:4])// Vent
             translate([topX/8,topY-10*vspace,topZ-topThick-1])rounded_rect(topX/8*6,1,topThick+2,1);
+        translate(0,0,0) lip_lock_top();// Lip Lock
+
     }
     translate([2.5+topUnoXOffset,14+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);// Uno Mount
     translate([2.5+5.1+topUnoXOffset,14+1.3+50.8+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);
     translate([2.5+5.1+27.9+topUnoXOffset,14+1.3+50.8+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);
     translate([2.5+5.1+27.9+15.2+topUnoXOffset,14+1.3+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);
-    translate([2,2,0]) mount_box(topZ,3,4);// Top Mount
-    translate([topX-2,2,0]) mount_box(topZ,3,4);
-    translate([2,topY-2,0]) mount_box(topZ,3,4);
-    translate([topX-2,topY-2,0]) mount_box(topZ,3,4);
+    translate([2,2,1]) mount_box(topZ-1,3,4);// Top Mount
+    translate([topX-2,2,1]) mount_box(topZ-1,3,4);
+    translate([2,topY-2,1]) mount_box(topZ-1,3,4);
+    translate([topX-2,topY-2,1]) mount_box(topZ-1,3,4);
 }
 
 //--------------------------
 
-if (drawTop) { translate([topX+topThick,topThick,topZ]) rotate([0,180,0]) top(); }
+if (drawTop) {
+    translate([topX+topThick,topThick,topZ]) rotate([0,180,0]) top();
+}
 
 if (drawBottom) { translate([bottomThick,bottomThick,0]) bottom(); }
 
