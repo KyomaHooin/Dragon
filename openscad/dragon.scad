@@ -2,12 +2,10 @@
 // DragonFrame Motor Unit box
 //
 //TODO:
-// -supply sink
-// -box mount
+// -top/supply sink
 // -LED hole
 // -Bridges/Hole
 // -box lip lock
-// -box vent
 
 $fn=50;
 
@@ -28,10 +26,18 @@ module rounded_rect(x, y, z, radius) {
 
 module mount(dia,thick) {
     difference() {
-        cylinder(h=thick, r2=dia,r1=dia+1);
-        translate([0,0,-1])cylinder(h=thick+2, d=dia);
+        cylinder(h=thick,r1=dia+1,r2=dia);
+        translate([0,0,-1]) cylinder(h=thick+2,d=dia);
     }
 }
+
+module mount_box(thick,hole,dia) {
+    difference() {
+        cylinder(h=thick,d=dia*2);
+        translate([0,0,-1]) cylinder(h=thick+2,d=hole);
+    }
+}
+
 
 module bridge() {
     difference() {
@@ -118,6 +124,10 @@ module bottom() {
     translate([bottomX,60+38-4,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);
     translate([45,bottomY-10,bottomThick]) rotate([0,0,90]) bridge();// Supply Bridge
     translate([65,bottomY-10,bottomThick]) rotate([0,0,90]) bridge();// Motor Bridge
+    translate([2,2,0]) mount_box(bottomZ,2,4);// Bottom mount
+    translate([bottomX-2,2,0]) mount_box(bottomZ,2,4);
+    translate([bottomX-2,bottomY-2,0]) mount_box(bottomZ,2,4);
+    translate([2,bottomY-2,0]) mount_box(bottomZ,2,4);
 }
 
 topX=65;
@@ -131,11 +141,21 @@ module top() {
         translate([0,0,0]) rounded_rect(topX,topY,topZ,topThick);// BASE
         translate([0,0,-topThick]) cube([topX,topY,topZ]);// FILL
         translate([53.3+(topX-53.3)/2,6.2-topThick,topZ-topThick-3]) rotate([180,0,180]) uno();// Uno
+        translate([2,2,topZ-3]) cylinder(h=topThick+2,d=3);//Top Mount Hole
+        translate([topX-2,2,topZ-3]) cylinder(h=topThick+2,d=3);
+        translate([2,topY-2,topZ-3]) cylinder(h=topThick+2,d=3);
+        translate([topX-2,topY-2,topZ-3]) cylinder(h=topThick+2,d=3);
+        for (vspace=[1:4])// Vent
+            translate([topX/4,topY-10*vspace,topZ-topThick-1])rounded_rect(topX/2,1,topThick+2,1);
     }
     translate([2.5+topUnoXOffset,14+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);// Uno Mount
     translate([2.5+5.1+topUnoXOffset,14+1.3+50.8+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);
     translate([2.5+5.1+27.9+topUnoXOffset,14+1.3+50.8+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);
     translate([2.5+5.1+27.9+15.2+topUnoXOffset,14+1.3+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);
+    translate([2,2,0]) mount_box(topZ,3,4);// Top Mount
+    translate([topX-2,2,0]) mount_box(topZ,3,4);
+    translate([2,topY-2,0]) mount_box(topZ,3,4);
+    translate([topX-2,topY-2,0]) mount_box(topZ,3,4);
 }
 
 //--------------------------
