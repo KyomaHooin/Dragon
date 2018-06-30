@@ -2,7 +2,6 @@
 // DragonFrame Motor Unit box
 //
 //TODO:
-// -Bridges/Hole
 // -LED hole
 
 $fn=50;
@@ -50,9 +49,18 @@ module lip_lock_bottom() {
 module bridge() {
     difference() {
         cube([5,18,7]);
-        translate([-1,9,7]) rotate([0,90,0]) cylinder(h=10,d=7);
-        translate([2.5,2.5,4]) cylinder(h=4,d=2);
-        translate([2.5,15.5,4]) cylinder(h=4,d=2);
+        translate([-1,9,7]) rotate([0,90,0]) cylinder(h=7,d=8);
+        translate([2.5,2.5,3]) cylinder(h=5,d=2);
+        translate([2.5,15.5,3]) cylinder(h=5,d=2);
+    }
+}
+
+module bridge_motor() {
+    difference() {
+        cube([5,15,5]);
+        translate([-1,5,3.5]) cube([7,5,2]);
+        translate([2.5,2.5,1]) cylinder(h=5,d=2);
+        translate([2.5,12.5,1]) cylinder(h=5,d=2);
     }
 }
 
@@ -121,8 +129,8 @@ module bottom() {
         translate([0,0,0]) rounded_rect(bottomX,bottomY,bottomZ+1,bottomThick);// BASE
         translate([0,0,bottomThick]) cube([bottomX,bottomY,bottomZ]);// FILL
         translate([+1,10,bottomThick+1]) supply();// Supply
-        translate([bottomX/2+4,bottomY+2,bottomThick+7]) rotate([90,0,0]) cylinder(h=4,d=5);// Supply Hole
-        translate([bottomX/2+21,bottomY+2,bottomThick+5.5]) rotate([90,0,0]) cube([5,3,4]);// Motor Hole
+        translate([bottomX/2+4,bottomY+2,bottomThick+7]) rotate([90,0,0]) cylinder(h=4,d=8);// Supply Hole
+        translate([bottomX/2+20,bottomY+2,bottomThick+3.5]) rotate([90,0,0]) cube([5,2.85,4]);// Motor Hole
         translate([0,0,bottomZ]) lip_lock_bottom();// Lip Lock
         translate([53.3+(topX-53.3)/2,6.2-bottomThick,bottomZ+topZ-topThick-3]) rotate([180,0,180]) uno();// Uno Cut
         translate([25.4+1,10.5+10,0]) cylinder(h=1,d1=5.5,d2=3);// Supply Sink
@@ -136,8 +144,8 @@ module bottom() {
     translate([0,2.75+66.5+10,14+bottomThick+1]) rotate([0,90,0]) mount(3,1);
     translate([bottomX,60+4,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);// Driver mount
     translate([bottomX,60+38-4,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);
-    translate([45,bottomY-10,bottomThick]) rotate([0,0,90]) bridge();// Supply Bridge
-    translate([65,bottomY-10,bottomThick]) rotate([0,0,90]) bridge();// Motor Bridge
+    translate([bottomX/2+13,bottomY-12,bottomThick]) rotate([0,0,90]) bridge();// Supply Bridge
+    translate([bottomX/2+30,bottomY-12,bottomThick]) rotate([0,0,90]) bridge_motor();// Motor Bridge
     translate([2,2,0]) mount_box(bottomZ,2,4);// Bottom mount
     translate([bottomX-2,2,0]) mount_box(bottomZ,2,4);
     translate([bottomX-2,bottomY-2,0]) mount_box(bottomZ,2,4);
