@@ -2,10 +2,10 @@
 // DragonFrame Motor Unit box
 //
 //TODO:
-// -top/supply sink
+// -box lip lock
 // -LED hole
 // -Bridges/Hole
-// -box lip lock
+// -top/supply sink
 
 $fn=50;
 
@@ -38,7 +38,6 @@ module mount_box(thick,hole,dia) {
     }
 }
 
-
 module bridge() {
     difference() {
         cube([5,18,7]);
@@ -60,11 +59,11 @@ module driver() {
         translate([driverX/2,driverY-4,-1]) cylinder(h=driverZ+2,d=3);
     }
     color("black") {
-        translate([0,driverY/4,driverZ]) cube([5,22,5]);// header M/PWR
-        translate([driverX-5,driverY-11-driverY/8,driverZ]) cube([5,11,5]);// header
+        translate([0,driverY/4,driverZ]) cube([5,22,5]);// Header M/PWR
+        translate([driverX-5,driverY-11-driverY/8,driverZ]) cube([5,11,5]);// Header
     }
     color("silver")
-    translate([driverX-20,driverY-8,driverZ]) cylinder(h=5.5,d=6);// header
+    translate([driverX-20,driverY-8,driverZ]) cylinder(h=5.5,d=6);// Header
 }
 
 module uno() {
@@ -146,7 +145,7 @@ module top() {
         translate([2,topY-2,topZ-3]) cylinder(h=topThick+2,d=3);
         translate([topX-2,topY-2,topZ-3]) cylinder(h=topThick+2,d=3);
         for (vspace=[1:4])// Vent
-            translate([topX/4,topY-10*vspace,topZ-topThick-1])rounded_rect(topX/2,1,topThick+2,1);
+            translate([topX/8,topY-10*vspace,topZ-topThick-1])rounded_rect(topX/8*6,1,topThick+2,1);
     }
     translate([2.5+topUnoXOffset,14+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);// Uno Mount
     translate([2.5+5.1+topUnoXOffset,14+1.3+50.8+6.2-topThick,topZ-topThick]) rotate([0,180,0]) mount(2,3);
