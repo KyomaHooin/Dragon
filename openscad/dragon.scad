@@ -127,8 +127,8 @@ module bottom() {
         translate([53.3+(topX-53.3)/2,6.2-bottomThick,bottomZ+topZ-topThick-3]) rotate([180,0,180]) uno();// Uno Cut
         translate([25.4+1,10.5+10,0]) cylinder(h=1,d1=5.5,d2=3);// Supply Sink
         translate([25.4+1,10.5+55+10,0]) cylinder(h=1,d1=5.5,d2=3);
-        translate([-bottomThick,2.75+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=1,d1=5.5,d2=3);
-        translate([-bottomThick,2.75+66.5+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=1,d1=5.5,d2=3);
+        translate([-bottomThick-0.1,2.75+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=1.1,d1=5.5,d2=3);
+        translate([-bottomThick-0.1,2.75+66.5+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=1.1,d1=5.5,d2=3);
     }
     translate([25.4+1,10.5+10,bottomThick]) mount(3,1);// Supply mount
     translate([25.4+1,10.5+55+10,bottomThick]) mount(3,1);
