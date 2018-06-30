@@ -119,12 +119,12 @@ bottomThick=2;
 
 module bottom() {
     difference() {
-        translate([0,0,0]) rounded_rect(bottomX,bottomY,bottomZ,bottomThick);// BASE
+        translate([0,0,0]) rounded_rect(bottomX,bottomY,bottomZ+1,bottomThick);// BASE
         translate([0,0,bottomThick]) cube([bottomX,bottomY,bottomZ]);// FILL
         translate([+1,10,bottomThick+1]) supply();// Supply
         translate([bottomX/2+4,bottomY+2,bottomThick+7]) rotate([90,0,0]) cylinder(h=4,d=5);// Supply Hole
         translate([bottomX/2+21,bottomY+2,bottomThick+5.5]) rotate([90,0,0]) cube([5,3,4]);// Motor Hole
-        translate([0,0,bottomZ-1]) lip_lock_bottom();// Lip Lock
+        translate([0,0,bottomZ]) lip_lock_bottom();// Lip Lock
     }
     translate([25.4+1,10.5+10,bottomThick]) mount(3,1);// Supply mount
     translate([25.4+1,10.5+55+10,bottomThick]) mount(3,1);
@@ -134,10 +134,10 @@ module bottom() {
     translate([bottomX,60+38-4,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);
     translate([45,bottomY-10,bottomThick]) rotate([0,0,90]) bridge();// Supply Bridge
     translate([65,bottomY-10,bottomThick]) rotate([0,0,90]) bridge();// Motor Bridge
-    translate([2,2,0]) mount_box(bottomZ-1,2,4);// Bottom mount
-    translate([bottomX-2,2,0]) mount_box(bottomZ-1,2,4);
-    translate([bottomX-2,bottomY-2,0]) mount_box(bottomZ-1,2,4);
-    translate([2,bottomY-2,0]) mount_box(bottomZ-1,2,4);
+    translate([2,2,0]) mount_box(bottomZ,2,4);// Bottom mount
+    translate([bottomX-2,2,0]) mount_box(bottomZ,2,4);
+    translate([bottomX-2,bottomY-2,0]) mount_box(bottomZ,2,4);
+    translate([2,bottomY-2,0]) mount_box(bottomZ,2,4);
 }
 
 topX=65;
@@ -176,7 +176,9 @@ if (drawTop) {
     translate([topX+topThick,topThick,topZ]) rotate([0,180,0]) top();
 }
 
-if (drawBottom) { translate([bottomThick,bottomThick,0]) bottom(); }
+if (drawBottom) {
+    translate([bottomThick,bottomThick,0]) bottom();
+}
 
 if (drawAll) {
     bottom();
