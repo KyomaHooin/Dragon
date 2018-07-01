@@ -6,6 +6,7 @@ DragonFrame Moco custom motor box.
 
 FILE
 <pre>
+               schema/ - Schematic directory.
            dragon.scad - Mail file.
         dragon_top.stl - Top part STL.
      dragon_bridge.stl - Bridge part STL.
