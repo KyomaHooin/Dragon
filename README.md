@@ -19,7 +19,6 @@ FILE
                 openscad/ - Custom 3D printable box.
 
 DFMoco_eMotimoTB3_130.ino - Original code by DragonFrame.
-           Motor_demo.ino - Simple demo code.
 </pre>
 SOURCE
 
