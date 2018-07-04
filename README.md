@@ -13,7 +13,6 @@ COMPONENT
  1x Nema 17 Stepper(42STH47-1684A)
  1x Big Easy Driver(ROB-12859)
  1x Mean Well Supply(RS-25-12)
-
 10x M3x6 Screw Phillips Pan (M2.5x4-5 = optimal)
  2x M3x6 Bolt -Phillips Flat (M3x4-5 = optimal)
  4x M3x30 Screw Phillips Flat (M3x25 = optimal)
@@ -25,7 +24,7 @@ COMPONENT
 FILE
 <pre>
                 openscad/ - Custom 3D printable box.
-
+        dragon_screen.png - Color connection schematic.
 DFMoco_eMotimoTB3_130.ino - Original code by DragonFrame.
 </pre>
 SOURCE
