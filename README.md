@@ -9,10 +9,11 @@ DIAGRAM
 
 COMPONENT
 <pre>
- 1x Arduino Uno(R3)
+ 1x Arduino Uno(R3) 
  1x Nema 17 Stepper(42STH47-1684A)
  1x Big Easy Driver(ROB-12859)
- 1x Mean Well Supply(RS-25-12)
+ 1x Mean Well Supply 12/2A (RS-25-12)
+ 1x 10x10x5mm Driver Heatsink(Alu/Adhesive)
 10x M3x6 Screw Phillips Pan (M2.5x4-5 = optimal)
  2x M3x6 Bolt -Phillips Flat (M3x4-5 = optimal)
  4x M3x30 Screw Phillips Flat (M3x25 = optimal)
