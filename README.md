@@ -11,7 +11,7 @@ COMPONENT
 <pre>
  1x <a href="https://laskarduino.cz/vyvojove-desky/100002-arduino-uno-r3-atmega328p-microusb-klon.html">Arduino Uno</a>(R3) 
  1x <a href="https://cnc.inshop.cz/krokove-motory-drivery/krokovy-motor-s-prirubou-nema17-0.44nm-typ-a">Nema 17 Stepper</a>(42STH47-1684A)
- 1x <a href="https://www.hwkitchen.com/products/big-easy-driver/">Big Easy Driver</a>(ROB-12859) / <a href="https://arduino-shop.cz/arduino/1025-ramps1-4-drv8825-driver-pro-krokove-motory-1434305774.html">DRV8825</a> / (<a href="https://www.postavrobota.cz/Driver-pro-krokove-motory-A4988-d92.htm">A4988</a>)
+ 1x <a href="https://www.aliexpress.com/item/2A-Phase-3D-Printer-Big-Easy-Driver-Board-V1-2-A4988-Stepper-Motor-Driver-Board-On/32834035739.html">Big Easy Driver</a>(ROB-12859) / <a href="https://arduino-shop.cz/arduino/1025-ramps1-4-drv8825-driver-pro-krokove-motory-1434305774.html">DRV8825</a> / (<a href="https://www.postavrobota.cz/Driver-pro-krokove-motory-A4988-d92.htm">A4988</a>)
  3x <a href="https://www.ges.cz/cz/cpp-3-5-3bu-GES06614450.html">Terminal Block</a>(3BU 3.5mm)
  1x <a href="https://www.ges.cz/cz/nks-180-0-GES06914278.html">Supply Cable</a>
  1x <a href="https://www.ges.cz/cz/zdroj-sitovy-prumyslovy-rs-25-12-GES07507650.html">Mean Well Supply</a> 12/2A(RS-25-12)
