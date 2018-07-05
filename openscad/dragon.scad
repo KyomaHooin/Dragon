@@ -5,7 +5,7 @@
 $fn=50;
 
 drawTop=0;
-drawBottom=1;
+drawBottom=0;
 drawAll=0;
 drawBridgePart=0;
 
@@ -107,8 +107,8 @@ module driver() {
         translate([driverX/2,driverY-4,-1]) cylinder(h=driverZ+2,d=3);
     }
     color("black") {
-        translate([0,driverY/4,driverZ]) cube([5,22,5]);// Header M/PWR
-        translate([driverX-5,driverY-11-driverY/8,driverZ]) cube([5,11,5]);// Header
+        translate([0,driverY/4,driverZ]) cube([6.6,22,8.4]);// Header M/PWR
+        translate([driverX-6.6,driverY-11-driverY/8,driverZ]) cube([6.6,11,8.4]);// Header
     }
     color("silver")
     translate([driverX-20,driverY-8,driverZ]) cylinder(h=5.5,d=6);// Header
