@@ -5,7 +5,7 @@
 $fn=50;
 
 drawTop=0;
-drawBottom=0;
+drawBottom=1;
 drawAll=0;
 drawBridgePart=0;
 
@@ -155,21 +155,16 @@ module bottom() {
         translate([0,0,0]) rounded_rect(bottomX,bottomY,bottomZ+1,bottomThick);// BASE
         translate([0,0,bottomThick]) cube([bottomX,bottomY,bottomZ]);// FILL
         }
-        translate([25.4+1,10.5+10,bottomThick-1]) mount(3,2);// Supply mount - bottom + NF bug
-        translate([25.4+1,10.5+55+10,bottomThick-1]) mount(3,2);
+        translate([25.4+1,10.5+10,bottomThick]) cylinder(h=1,r1=3,r2=2);// Supply mount - bottom
+        translate([25.4+1,10.5+55+10,bottomThick]) cylinder(h=1,r1=3,r2=2);
         }
-        translate([25.4+1,10.5+10,-1]) cylinder(h=4,d=3);// Screw Hole
-        translate([25.4+1,10.5+55+10,-1]) cylinder(h=4,d=3);
         translate([-2,2.75+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=4,d=3);
-        translate([-2,2.75+66.5+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=4,d=3);
-        
+        translate([-2,2.75+66.5+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=4,d=3);        
         translate([37,bottomY+2,bottomThick+7]) rotate([90,0,0]) cylinder(h=4,d=8);// Supply Hole
         translate([53,bottomY+2,bottomThick+3.5]) rotate([90,0,0]) cube([5,2.85,4]);// Motor Hole
         translate([0,0,bottomZ]) lip_lock_bottom();// Lip Lock
         translate([53.3+(topX-53.3)/2,6.2-bottomThick,bottomZ+topZ-topThick-3]) rotate([180,0,180]) uno();// Uno Cut
-        translate([25.4+1,10.5+10,0]) cylinder(h=1,d1=5.5,d2=3);// Supply Sink
-        translate([25.4+1,10.5+55+10,0]) cylinder(h=1,d1=5.5,d2=3);
-        translate([-bottomThick-0.1,2.75+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=1.1,d1=5.5,d2=3);
+        translate([-bottomThick-0.1,2.75+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=1.1,d1=5.5,d2=3);// Supply Sink
         translate([-bottomThick-0.1,2.75+66.5+10,14+bottomThick+1]) rotate([0,90,0]) cylinder(h=1.1,d1=5.5,d2=3);
     }
     translate([0-0.01,2.75+10,14+bottomThick+1]) rotate([0,90,0]) mount(3,1);// Supply mount - side
