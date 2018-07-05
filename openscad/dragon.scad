@@ -143,7 +143,7 @@ module supply() {
     translate([0,supplyY,supplyZ/4]) cube([51,14,14]);// Header
 }
 
-bottomX=65;
+bottomX=65+2;
 bottomY=125;
 bottomZ=35;
 bottomThick=2;
@@ -183,7 +183,7 @@ module bottom() {
     translate([-1,bottomY-5,0]) rotate([0,0,180]) wall();
 }
 
-topX=65;
+topX=65+2;
 topY=125;
 topZ=17.5;
 topThick=2;
