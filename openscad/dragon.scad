@@ -169,8 +169,8 @@ module bottom() {
     }
     translate([0-0.01,2.75+10,14+bottomThick+1]) rotate([0,90,0]) mount(3,1);// Supply mount - side
     translate([0-0.01,2.75+66.5+10,14+bottomThick+1]) rotate([0,90,0]) mount(3,1);
-    translate([bottomX,60+3.5,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);// Driver mount
-    translate([bottomX,60+38-3.5,16+bottomThick+5]) rotate([0,90,180]) mount(2,3);
+    translate([bottomX,60+3.5,16+bottomThick+9]) rotate([0,90,180]) mount(2,3);// Driver mount
+    translate([bottomX,60+38-3.5,16+bottomThick+9]) rotate([0,90,180]) mount(2,3);
     translate([46,bottomY-12,bottomThick]) rotate([0,0,90]) bridge();// Supply Bridge
     translate([63,bottomY-12,bottomThick]) rotate([0,0,90]) bridge_motor();// Motor Bridge
     translate([0,0,2]) box_mount(bottomZ-1,2);// Bottom mount
@@ -233,7 +233,7 @@ if (drawBridgePart) {
 if (drawAll) {
     bottom();
     translate([1,10,bottomThick+1]) supply();
-    translate([bottomX-3,60,bottomThick+5]) rotate([0,0,0]) rotate([0,-90,0]) driver();
+    translate([bottomX-3,60,bottomThick+9]) rotate([0,0,0]) rotate([0,-90,0]) driver();
     translate([53.3+(topX-53.3)/2,6.2-bottomThick,bottomZ+topZ-topThick-3]) rotate([180,0,180]) uno();
     translate([0,0,bottomZ]) top();
 }
