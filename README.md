@@ -15,7 +15,7 @@ COMPONENT
  3x <a href="https://www.ges.cz/cz/cpp-3-5-3bu-GES06614450.html">Terminal Block</a>(3BU 3.5mm)
  1x <a href="https://www.ges.cz/cz/nks-180-0-GES06914278.html">Supply Cable</a>
  1x <a href="https://www.ges.cz/cz/zdroj-sitovy-prumyslovy-rs-25-12-GES07507650.html">Mean Well Supply</a> 12/2A(RS-25-12)
- 1x <a href="http://www.hezkyden.cz/shop/hlinikovy-chladic-samolepici/">Driver Heatsink</a>(10x10x5mm)
+ 1x <a href="http://www.hezkyden.cz/shop/hlinikovy-chladic-samolepici/">Driver Heatsink</a>(9x9x5mm)
 10x <a href="https://www.ges.cz/cz/esst-m2-5x6-GES06814916.html">Screw Phillips Pan</a> M2.5x6(M2.5x4-5 = optimal)
  2x <a href="https://www.ges.cz/cz/skls-m3x6-GES06814931.html">Bolt Phillips Flat</a> M3x6(M3x4-5 = optimal)
  4x Screw Phillips Flat M3x30(M3x25 = optimal)
