@@ -7,7 +7,7 @@ DragonFrame Moco custom motor control box.
 FILE
 <pre>
               schema/ - Schematic directory.
-          dragon.scad - Mail file.
+          dragon.scad - SCAD model.
        dragon_top.stl - Top part STL.
     dragon_bottom.stl - Bottom part STL.
     dragon_bridge.stl - Bridge part STL.
