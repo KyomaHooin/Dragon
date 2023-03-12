@@ -28,7 +28,7 @@ FILE
 <pre>
                 openscad/ - Custom 3D printable box.
         dragon_screen.png - Color connection schematic.
-DFMoco_eMotimoTB3_130.ino - Original code by DragonFrame.
+DFMoco.ino - Original code by DragonFrame.
 </pre>
 SOURCE
 
