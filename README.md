@@ -26,9 +26,9 @@ COMPONENT
 </pre>
 FILE
 <pre>
-                openscad/ - Custom 3D printable box.
-        dragon_screen.png - Color connection schematic.
-DFMoco.ino - Original code by DragonFrame.
+        openscad/ - Custom 3D printable box.
+dragon_screen.png - Color connection schematic.
+       DFMoco.ino - Original code by DragonFrame.
 </pre>
 SOURCE
 
